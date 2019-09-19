@@ -12,7 +12,7 @@ class Top10Poder extends Component{
       }
 
     componentDidMount() {
-    fetch('/api/heroes')
+    fetch('/api/top10poder')
         .then(res => res.json())
         .then(heroe => this.setState({heroe}, () => console.log('Heroes fetched...', heroe)));
     }
@@ -23,9 +23,9 @@ class Top10Poder extends Component{
                 Top 10 con mas poder
             </Typography>
             <Grid container spacing = {16} justify="center">
-            {this.state.heroe.sort((heroes1,heroes2) => (heroes2.powerstats.power > heroes1.powerstats.power) ? 1 : ((heroes1.powerstats.power > heroes2.powerstats.power) ? -1 : 0)).map(heroes =>  {
-            return <HeroeCards name={heroes.name} images={heroes.images.sm} rname={heroes.biography.fullName} pbirth={heroes.biography.placeOfBirth}/>
-            }).slice(0,10)}
+            {this.state.heroe.map(heroes => {
+                return <HeroeCards name={heroes.name} images={heroes.image} rname={heroes.realname} pbirth={heroes.placebirth}/>
+            })}
             </Grid>
         </Fragment>
         );

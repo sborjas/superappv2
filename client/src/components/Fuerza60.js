@@ -12,7 +12,7 @@ class Fuerza60 extends Component{
       }
 
       componentDidMount() {
-        fetch('/api/heroes')
+        fetch('/api/fuerzamayor60')
           .then(res => res.json())
           .then(heroe => this.setState({heroe}, () => console.log('Heroes fetched...', heroe)));
       }
@@ -24,10 +24,9 @@ class Fuerza60 extends Component{
                 <Typography variant="h4" gutterBottom align="center" >
                   Super heroes con fuerza mayor a 60 puntos
                 </Typography>
-                <Grid container spacing = {16} justify="center">
+                <Grid container spacing = {16} justify="center">  
                 {this.state.heroe.map(heroes => {
-                if(heroes.powerstats.strength > '60')  
-                  return <HeroeCards name={heroes.name} images={heroes.images.sm} rname={heroes.biography.fullName} pbirth={heroes.biography.placeOfBirth}/>
+                  return <HeroeCards name={heroes.name} images={heroes.image} rname={heroes.realname} pbirth={heroes.placebirth}/>
                 })}
                 </Grid>
             </Fragment>

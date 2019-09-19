@@ -12,7 +12,7 @@ class Velocidad60 extends Component{
       }
 
     componentDidMount() {
-    fetch('/api/heroes')
+    fetch('/api/veloz60eintelmenos60')
         .then(res => res.json())
         .then(heroe => this.setState({heroe}, () => console.log('Heroes fetched...', heroe)));
     }
@@ -25,8 +25,7 @@ class Velocidad60 extends Component{
                 </Typography>
                 <Grid container spacing = {16} justify="center">
                 {this.state.heroe.map(heroes => {
-                if(heroes.powerstats.speed > '60' && heroes.powerstats.intelligence < '60')  
-                return <HeroeCards name={heroes.name} images={heroes.images.sm} rname={heroes.biography.fullName} pbirth={heroes.biography.placeOfBirth}/>
+                return <HeroeCards name={heroes.name} images={heroes.image} rname={heroes.realname} pbirth={heroes.placebirth}/>
                 })}
                 </Grid>
             </Fragment>
